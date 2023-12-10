@@ -8,7 +8,7 @@ def extended_euclidean(a, b):
 def find_d(e, F):
     m, x, y = extended_euclidean(e, F)
     if m != 1:
-        raise ValueError(f"{e} is not invertible modulo {F}")
+        raise ValueError(f"{e} is not invertible module {F}")
     else:
         return x % F
 
