@@ -64,7 +64,7 @@ def menu_calculate_coprime():
     if e is not None:
         print(f"For F = {F}, e = {e}")
     else:
-        print("Could not find a coprime for F.")
+        print(f"Could not find a coprime for F = {F}.")
 
 def main():
     menu = int(input("1 - Calculate the value of d\n2 - Calculate the value of F\n3 - Calculate the value of e\n"))
