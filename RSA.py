@@ -30,40 +30,40 @@ def calculate_F_p_q(p, q):
     return lcm(p - 1, q - 1)
 
 def menu_calculate_d():
-    option = int(input("You have:\n1 - The values of p and q\n2 - The value of F\n"))
+    option = int(input("Se você não tem o valor de e, primeiro calcule-o. Cancele o script e volte. \nVocê tem:\n1 - Valores de p e q\n2 - Valor de F\n"))
 
     if option == 1:
-        e = int(input("Enter the value of e: "))
-        F = int(input("Enter the value of F: "))
+        e = int(input("Insira o valor de e: "))
+        F = int(input("Insira o valor de F: "))
 
     elif option == 2:
-        e = int(input("Enter the value of e: "))
-        p = int(input("Enter the value of p: "))
-        q = int(input("Enter the value of q: "))
+        e = int(input("Insira o valor de e: "))
+        p = int(input("Insira o valor de p: "))
+        q = int(input("Insira o valor de q: "))
         F = calculate_F_p_q(p, q)
 
     try:
         d = find_d(e, F)
-        print(f"For e = {e} and F = {F}, d = {d}")
+        print(f"Para e = {e} e F = {F}, d = {d}")
     except ValueError as e:
         print(e)
 
 def menu_calculate_F():
-    p = int(input("Enter the value of p: "))
-    q = int(input("Enter the value of q: "))
+    p = int(input("Insira o valor de p: "))
+    q = int(input("Insira o valor de q: "))
     F = calculate_F_p_q(p, q)
-    print(f"For p = {p} and q = {q}, F = {F}")
+    print(f"Para p = {p} e q = {q}, F = {F}")
 
 def menu_calculate_coprime():
-    F = int(input("Enter the value of F: "))
+    F = int(input("Insira o valor de F: "))
     e = find_coprime(F)
     if e is not None:
-        print(f"For F = {F}, e = {e}")
+        print(f"Para F = {F}, e = {e}")
     else:
-        print(f"Could not find a coprime for F = {F}.")
+        print(f"Não há um coprimo para F = {F}.")
 
 def main():
-    menu = int(input("Choose a number from menu:\n\n1 - Calculate the value of d\n2 - Calculate the value of F\n3 - Calculate the value of e\n"))
+    menu = int(input("\nEscolha um número do menu:\n\n1 - Calcular d\n2 - Calcular F\n3 - Calcular e\n"))
 
     if menu == 1:
         menu_calculate_d()
