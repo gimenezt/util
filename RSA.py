@@ -67,7 +67,7 @@ def menu_calculate_coprime():
         print(f"Could not find a coprime for F = {F}.")
 
 def main():
-    menu = int(input("1 - Calculate the value of d\n2 - Calculate the value of F\n3 - Calculate the value of e\n"))
+    menu = int(input("Choose a number from menu:\n\n1 - Calculate the value of d\n2 - Calculate the value of F\n3 - Calculate the value of e\n"))
 
     if menu == 1:
         menu_calculate_d()
