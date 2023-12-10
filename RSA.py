@@ -30,7 +30,7 @@ def calculate_F_p_q(p, q):
     return lcm(p - 1, q - 1)
 
 def menu_calculate_d():
-    option = int(input("You have:\n1 - The values of p and q\n2 - The value of F\n3 - The value of n"))
+    option = int(input("You have:\n1 - The values of p and q\n2 - The value of F\n"))
 
     if option == 1:
         e = int(input("Enter the value of e: "))
@@ -41,10 +41,6 @@ def menu_calculate_d():
         p = int(input("Enter the value of p: "))
         q = int(input("Enter the value of q: "))
         F = calculate_F_p_q(p, q)
-
-    elif option == 3:
-        n = int(input("Enter the value of n: "))
-        e = int(input("Enter the value of e: "))
 
     try:
         d = find_d(e, F)
