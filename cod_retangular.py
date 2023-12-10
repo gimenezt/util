@@ -10,21 +10,22 @@ def calcular_bits_paridade(mensagem, num_linhas, num_colunas):
     # Retornar os bits de paridade em ordem
     return ''.join(paridade_linhas + paridade_colunas)
 
-def decodificar_mensagem(mensagem, num_linhas, num_colunas):
-    mensagem_original = ""
+def decodificar_mensagem(mensagem_codificada, bits_paridade, num_linhas, num_colunas):
+    # Verifica a paridade das linhas
+    for i in range(num_linhas):
+        paridade_linha = sum(map(int, mensagem_codificada[i * num_colunas : (i + 1) * num_colunas])) % 2
+        if paridade_linha != int(bits_paridade[i]):
+            print(f"Erro na linha {i + 1}")
 
-    # Remover bits de paridade das linhas
-    bits_mensagem = mensagem[:-num_linhas]
-    
-    # Dividir a mensagem em blocos de acordo com o número de colunas
-    blocos = [bits_mensagem[i:i+num_colunas] for i in range(0, len(bits_mensagem), num_colunas)]
+    # Verifica a paridade das colunas
+    for j in range(num_colunas):
+        valores_coluna = [int(mensagem_codificada[i * num_colunas + j]) for i in range(num_linhas)]
+        paridade_coluna = sum(valores_coluna) % 2
+        if paridade_coluna != int(bits_paridade[num_linhas + j]):
+            print(f"Erro na coluna {j + 1}")
 
-    # Transpor a matriz para decodificar a mensagem original
-    matriz_transposta = [list(x) for x in zip(*blocos)]
-
-    for linha in matriz_transposta:
-        mensagem_original += ''.join(linha)
-
+    # Reconstrói a mensagem original excluindo os bits de paridade
+    mensagem_original = ''.join([mensagem_codificada[i * num_colunas : (i + 1) * num_colunas] for i in range(num_linhas)])
     return mensagem_original
 
 
@@ -40,6 +41,6 @@ if opcao == 1:
     print("Bits de paridade: ", bits_paridade)
 
 elif opcao == 2:
-
-    mensagem_original = decodificar_mensagem(mensagem, num_linhas, num_colunas)
+    bits_paridade = input("Digite os bits de paridade (em ordem, primeiro linha, depois coluna): ")
+    mensagem_original = decodificar_mensagem(mensagem, bits_paridade, num_linhas, num_colunas)
     print("A mensagem original é:", mensagem_original)
