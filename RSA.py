@@ -32,11 +32,11 @@ def calculate_F_p_q(p, q):
 def menu_calculate_d():
     option = int(input("Se você não tem o valor de e, primeiro calcule-o. Cancele o script e volte. \nVocê tem:\n1 - Valores de p e q\n2 - Valor de F\n"))
 
-    if option == 1:
+    if option == 2:
         e = int(input("Insira o valor de e: "))
         F = int(input("Insira o valor de F: "))
 
-    elif option == 2:
+    elif option == 1:
         e = int(input("Insira o valor de e: "))
         p = int(input("Insira o valor de p: "))
         q = int(input("Insira o valor de q: "))
